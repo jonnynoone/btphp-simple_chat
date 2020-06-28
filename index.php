@@ -1,3 +1,13 @@
+<?php 
+
+include 'database.php'; 
+
+// Create Select Query
+$query = "SELECT * FROM messages";
+$result = mysqli_query($con, $query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,11 +28,25 @@
 
         <div class="chatbox">
             <ul>
-                <li class="message"><span>10:15 </span> - Jonny: Hey, what are you guys up to?</li>
-                <li class="message"><span>10:15 </span> - Jonny: Hey, what are you guys up to?</li>
-                <li class="message"><span>10:15 </span> - Jonny: Hey, what are you guys up to?</li>
-                <li class="message"><span>10:15 </span> - Jonny: Hey, what are you guys up to?</li>
-                <li class="message"><span>10:15 </span> - Jonny: Hey, what are you guys up to?</li>
+                <?php
+                /*
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo "
+                        <li class=\"message\">
+                            <span>" . $row['time'] . " </span>
+                            - " . $row['user'] . ": " . $row['message'] . "
+                        </li>
+                        ";
+                    }
+                */
+                ?>
+
+                <?php while($row = mysqli_fetch_assoc($result)) : ?>
+                    <li class="message">
+                            <span><?php echo $row['time'] ?></span>
+                            - <?php echo $row['user'] ?>: <?php echo $row['message'] ?>
+                    </li>
+                <?php endwhile; ?>
             </ul>
         </div> <!-- /.chatbox -->
 
