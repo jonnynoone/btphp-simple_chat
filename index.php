@@ -3,7 +3,7 @@
 include 'database.php'; 
 
 // Create Select Query
-$query = "SELECT * FROM messages";
+$query = "SELECT * FROM messages ORDER BY id ASC";
 $result = mysqli_query($con, $query);
 
 ?>
@@ -51,6 +51,9 @@ $result = mysqli_query($con, $query);
         </div> <!-- /.chatbox -->
 
         <div class="input">
+            <?php if(isset($_GET['error'])) : ?>
+                <div class="error"><?php echo $_GET['error']; ?></div>
+            <?php endif; ?>
             <form class="group" method="post" action="process.php">
                 <input type="text" name="user" placeholder="Enter Name">
                 <input type="text" name="message" placeholder="Enter Message">
