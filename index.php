@@ -44,7 +44,7 @@ $result = mysqli_query($con, $query);
                 <?php while($row = mysqli_fetch_assoc($result)) : ?>
                     <li class="message">
                             <span><?php echo $row['time'] ?></span>
-                            - <?php echo $row['user'] ?>: <?php echo $row['message'] ?>
+                            - <strong><?php echo $row['user'] ?></strong>: <?php echo $row['message'] ?>
                     </li>
                 <?php endwhile; ?>
             </ul>
